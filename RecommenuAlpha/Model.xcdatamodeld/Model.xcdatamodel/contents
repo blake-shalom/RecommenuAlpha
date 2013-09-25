@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Rating" syncable="YES">
+        <relationship name="ratingToUser" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userToRatings" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maleFemale" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="userToRatings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rating" inverseName="ratingToUser" inverseEntity="Rating" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Rating" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="User" positionX="160" positionY="192" width="128" height="150"/>
+    </elements>
+</model>
