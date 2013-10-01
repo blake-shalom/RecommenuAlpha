@@ -32,8 +32,17 @@
     self.mealDescLabel.text = menuMeal.mealDescription;
     self.likeLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealLikes];
     self.dislikeLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealDislikes];
-
-    
 }
 
+- (IBAction)selectOrderState:(id)sender
+{
+    if (self.currentOrderState == orderStatusStateSelected) {
+        self.currentOrderState = orderStatusStateUnselected;
+        [self.checkButton setTitle:@"0" forState:UIControlStateNormal];
+    }
+    else if (self.currentOrderState == orderStatusStateUnselected) {
+        self.currentOrderState = orderStatusStateUnselected;
+        [self.checkButton setTitle:@"1" forState:UIControlStateNormal];
+    }
+}
 @end

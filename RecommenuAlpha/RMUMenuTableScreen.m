@@ -59,6 +59,8 @@
     
     RMUMeal *cellMeal = [self.menu.meals objectAtIndex:indexPath.row];
     
+    [cell setCurrentMeal:cellMeal];
     
+    return cell;
 }
 @end
