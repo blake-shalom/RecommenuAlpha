@@ -11,8 +11,8 @@
 @interface RMUMenu : NSObject
 
 @property NSString *restaurantName;
-@property NSMutableArray *courses;
+@property NSMutableArray *meals;
 
-- (id)initWithString:(NSString*) restaurantName withCourseArray: (NSMutableArray*) courseArray;
+- (id)initWithString:(NSString*) restaurantName withCourseArray: (NSMutableArray*) mealArray;
 
 @end

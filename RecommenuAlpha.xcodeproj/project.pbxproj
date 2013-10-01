@@ -32,6 +32,8 @@
 		9DA336C117BC7635000CDAED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA336BF17BC7635000CDAED /* MainStoryboard.storyboard */; };
 		9DA336C417BC7635000CDAED /* RMULoginScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA336C317BC7635000CDAED /* RMULoginScreen.m */; };
 		9DA336CC17BC7826000CDAED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DA336CA17BC7826000CDAED /* Model.xcdatamodeld */; };
+		9DA34F6817FA792F00B55F95 /* RMUMenuTableScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA34F6717FA792F00B55F95 /* RMUMenuTableScreen.m */; };
+		9DA34F6E17FA817E00B55F95 /* RMUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA34F6D17FA817E00B55F95 /* RMUMenuCell.m */; };
 		9DBEDBDD17F35F72001762DF /* RMUMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBEDBDC17F35F72001762DF /* RMUMenu.m */; };
 		9DBEDBE017F36C66001762DF /* RMUMeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBEDBDF17F36C66001762DF /* RMUMeal.m */; };
 		9DC7EBE917CEEC6600DB77B2 /* RMUHomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7EBE817CEEC6600DB77B2 /* RMUHomeScreen.m */; };
@@ -80,6 +82,10 @@
 		9DA336C217BC7635000CDAED /* RMULoginScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMULoginScreen.h; sourceTree = "<group>"; };
 		9DA336C317BC7635000CDAED /* RMULoginScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMULoginScreen.m; sourceTree = "<group>"; };
 		9DA336CB17BC7826000CDAED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9DA34F6617FA792F00B55F95 /* RMUMenuTableScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUMenuTableScreen.h; sourceTree = "<group>"; };
+		9DA34F6717FA792F00B55F95 /* RMUMenuTableScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUMenuTableScreen.m; sourceTree = "<group>"; };
+		9DA34F6C17FA817E00B55F95 /* RMUMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUMenuCell.h; sourceTree = "<group>"; };
+		9DA34F6D17FA817E00B55F95 /* RMUMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUMenuCell.m; sourceTree = "<group>"; };
 		9DBEDBDB17F35F72001762DF /* RMUMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUMenu.h; sourceTree = "<group>"; };
 		9DBEDBDC17F35F72001762DF /* RMUMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUMenu.m; sourceTree = "<group>"; };
 		9DBEDBDE17F36C66001762DF /* RMUMeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUMeal.h; sourceTree = "<group>"; };
@@ -175,18 +181,12 @@
 			children = (
 				9DA336B617BC7635000CDAED /* RMUAppDelegate.h */,
 				9DA336B717BC7635000CDAED /* RMUAppDelegate.m */,
+				9DA34F6917FA793B00B55F95 /* View Controllers */,
 				9DA336BF17BC7635000CDAED /* MainStoryboard.storyboard */,
-				9DC7EBE717CEEC6600DB77B2 /* RMUHomeScreen.h */,
-				9DC7EBE817CEEC6600DB77B2 /* RMUHomeScreen.m */,
-				9DBEDBDB17F35F72001762DF /* RMUMenu.h */,
-				9DBEDBDC17F35F72001762DF /* RMUMenu.m */,
-				9DBEDBDE17F36C66001762DF /* RMUMeal.h */,
-				9DBEDBDF17F36C66001762DF /* RMUMeal.m */,
-				9DA336CA17BC7826000CDAED /* Model.xcdatamodeld */,
-				9DE44A2617BF074C008ACF84 /* User.h */,
-				9DE44A2717BF074C008ACF84 /* User.m */,
-				9DA336C217BC7635000CDAED /* RMULoginScreen.h */,
-				9DA336C317BC7635000CDAED /* RMULoginScreen.m */,
+				9DA34F6C17FA817E00B55F95 /* RMUMenuCell.h */,
+				9DA34F6D17FA817E00B55F95 /* RMUMenuCell.m */,
+				9DA34F6A17FA794E00B55F95 /* NSObjects */,
+				9DA34F6B17FA796700B55F95 /* Core Data */,
 				9DA336AE17BC7635000CDAED /* Supporting Files */,
 			);
 			path = RecommenuAlpha;
@@ -204,6 +204,40 @@
 				9DA336BD17BC7635000CDAED /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DA34F6917FA793B00B55F95 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9DA34F6617FA792F00B55F95 /* RMUMenuTableScreen.h */,
+				9DA34F6717FA792F00B55F95 /* RMUMenuTableScreen.m */,
+				9DC7EBE717CEEC6600DB77B2 /* RMUHomeScreen.h */,
+				9DC7EBE817CEEC6600DB77B2 /* RMUHomeScreen.m */,
+				9DA336C217BC7635000CDAED /* RMULoginScreen.h */,
+				9DA336C317BC7635000CDAED /* RMULoginScreen.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9DA34F6A17FA794E00B55F95 /* NSObjects */ = {
+			isa = PBXGroup;
+			children = (
+				9DBEDBDB17F35F72001762DF /* RMUMenu.h */,
+				9DBEDBDC17F35F72001762DF /* RMUMenu.m */,
+				9DBEDBDE17F36C66001762DF /* RMUMeal.h */,
+				9DBEDBDF17F36C66001762DF /* RMUMeal.m */,
+			);
+			name = NSObjects;
+			sourceTree = "<group>";
+		};
+		9DA34F6B17FA796700B55F95 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				9DA336CA17BC7826000CDAED /* Model.xcdatamodeld */,
+				9DE44A2617BF074C008ACF84 /* User.h */,
+				9DE44A2717BF074C008ACF84 /* User.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +311,8 @@
 				9DA336B817BC7635000CDAED /* RMUAppDelegate.m in Sources */,
 				9DA336C417BC7635000CDAED /* RMULoginScreen.m in Sources */,
 				9DA336CC17BC7826000CDAED /* Model.xcdatamodeld in Sources */,
+				9DA34F6817FA792F00B55F95 /* RMUMenuTableScreen.m in Sources */,
+				9DA34F6E17FA817E00B55F95 /* RMUMenuCell.m in Sources */,
 				9DE44A2817BF074C008ACF84 /* User.m in Sources */,
 				9DC7EBE917CEEC6600DB77B2 /* RMUHomeScreen.m in Sources */,
 				9D7D23A117E9391C00836681 /* AFHTTPClient.m in Sources */,

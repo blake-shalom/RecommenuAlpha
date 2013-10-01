@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "RMUMenu.h"
 #import "RMUMeal.h"
+#import "RMUMenuTableScreen.h"
 
 @interface RMUHomeScreen : UIViewController
 <CLLocationManagerDelegate>

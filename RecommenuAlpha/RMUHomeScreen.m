@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *location;
+@property (strong, nonatomic) RMUMenu *currentMenu;
 
 @end
 
@@ -104,9 +105,9 @@
                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                  NSArray *mealArray = [JSON objectForKey:@"dishes"];
                                                  RMUMenu *currentMenu = [self parseJSONIntoMenu:mealArray
-                                                                             withRestaurantName:restaurantName];
-                                                 RMUMeal *currentMeal = currentMenu.courses[0];
-                                                 NSLog(@"%@", currentMeal.mealName);
+                                                                            withRestaurantName:restaurantName];
+                                                 self.currentMenu = currentMenu;
+                                                 [self performSegueWithIdentifier:@"homeToMenu" sender:self];
                                              }
                                              failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                  NSLog(@"ERROR: %@", error);
@@ -137,6 +138,19 @@
     }
     RMUMenu *currentMenu = [[RMUMenu alloc]initWithString:restaurantName withCourseArray:currentCourses];
     return currentMenu;
+}
+
+#pragma mark - segue methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier  isEqual: @"homeToMenu"]){
+        RMUMenuTableScreen *newMenu = (RMUMenuTableScreen *) segue.destinationViewController;
+        newMenu.menu = self.currentMenu;
+    }
+    else {
+        
+    }
 }
 @end
 

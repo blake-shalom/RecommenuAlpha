@@ -10,11 +10,11 @@
 
 @implementation RMUMenu
 
-- (id)initWithString:(NSString*) restaurantName withCourseArray: (NSMutableArray*) courseArray {
+- (id)initWithString:(NSString*) restaurantName withCourseArray: (NSMutableArray*) mealArray {
     self = [super init];
     if (self) {
         self.restaurantName = restaurantName;
-        self.courses = courseArray;
+        self.meals = mealArray;
     }
     return self;
 }
