@@ -13,17 +13,19 @@
 
 // Enum that describes the state of the cell
 typedef enum {
-    orderStatusStateSelected,
-    orderStatusStateUnselected
+    orderStatusStateUnselected,
+    orderStatusStateSelected
 } orderStatusState;
 
+@property (weak, nonatomic) RMUMeal *currentMeal;
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
 @property (weak, nonatomic) IBOutlet UILabel *mealNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mealDescLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dislikeLabel;
 
+
 @property orderStatusState currentOrderState;
-- (void)setCurrentMeal:(RMUMeal *)menuMeal;
+- (void)loadCurrentMeal:(RMUMeal *)menuMeal;
 
 @end

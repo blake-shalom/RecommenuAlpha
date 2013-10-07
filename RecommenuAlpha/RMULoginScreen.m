@@ -113,7 +113,7 @@
 
 - (IBAction)signUpUser:(id)sender
 {
-    RMUAppDelegate *delegate = (RMUAppDelegate*) [[UIApplication sharedApplication] delegate];
+//    RMUAppDelegate *delegate = (RMUAppDelegate*) [[UIApplication sharedApplication] delegate];
     /* UNCOMMMENT FOR COREDATA
     User *currentUser = (User*) [NSEntityDescription insertNewObjectForEntityForName:@"User"
                                                               inManagedObjectContext:delegate.managedObjectContext];

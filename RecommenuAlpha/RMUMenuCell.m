@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        self.currentOrderState = orderStatusStateUnselected;
     }
     return self;
 }
@@ -26,12 +26,21 @@
     // Configure the view for the selected state
 }
 
-- (void)setCurrentMeal:(RMUMeal *)menuMeal
+- (void)loadCurrentMeal:(RMUMeal *)menuMeal
 {
+    self.currentMeal = menuMeal;
     self.mealNameLabel.text = menuMeal.mealName;
     self.mealDescLabel.text = menuMeal.mealDescription;
     self.likeLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealLikes];
     self.dislikeLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealDislikes];
+    if (menuMeal.selected) {
+        [self.checkButton setTitle:@"1" forState:UIControlStateNormal];
+        self.currentOrderState = orderStatusStateSelected;
+    }
+    else {
+        [self.checkButton setTitle:@"0" forState:UIControlStateNormal];
+        self.currentOrderState = orderStatusStateUnselected;
+    }
 }
 
 - (IBAction)selectOrderState:(id)sender
@@ -39,10 +48,13 @@
     if (self.currentOrderState == orderStatusStateSelected) {
         self.currentOrderState = orderStatusStateUnselected;
         [self.checkButton setTitle:@"0" forState:UIControlStateNormal];
+        self.currentMeal.selected = NO;
     }
-    else if (self.currentOrderState == orderStatusStateUnselected) {
-        self.currentOrderState = orderStatusStateUnselected;
+    else {
+        self.currentOrderState = orderStatusStateSelected;
         [self.checkButton setTitle:@"1" forState:UIControlStateNormal];
+        self.currentMeal.selected = YES;
     }
+    NSLog(@"current state after switch: %i", self.currentOrderState);
 }
 @end

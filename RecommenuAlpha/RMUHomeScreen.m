@@ -146,10 +146,10 @@
 {
     if ([segue.identifier  isEqual: @"homeToMenu"]){
         RMUMenuTableScreen *newMenu = (RMUMenuTableScreen *) segue.destinationViewController;
-        newMenu.menu = self.currentMenu;
+        [newMenu setMenu:self.currentMenu];
     }
     else {
-        
+        NSLog(@"Unknown segue");
     }
 }
 @end

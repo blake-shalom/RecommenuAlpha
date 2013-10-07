@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D178DF918027F4400924593 /* RMUOrderRatingScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D178DF818027F4400924593 /* RMUOrderRatingScreen.m */; };
 		9D7D23A117E9391C00836681 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D238F17E9391C00836681 /* AFHTTPClient.m */; };
 		9D7D23A217E9391C00836681 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D239117E9391C00836681 /* AFHTTPRequestOperation.m */; };
 		9D7D23A317E9391C00836681 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D239317E9391C00836681 /* AFImageRequestOperation.m */; };
@@ -42,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D178DF718027F4400924593 /* RMUOrderRatingScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUOrderRatingScreen.h; sourceTree = "<group>"; };
+		9D178DF818027F4400924593 /* RMUOrderRatingScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUOrderRatingScreen.m; sourceTree = "<group>"; };
 		9D7D238E17E9391C00836681 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		9D7D238F17E9391C00836681 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		9D7D239017E9391C00836681 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				9DC7EBE817CEEC6600DB77B2 /* RMUHomeScreen.m */,
 				9DA336C217BC7635000CDAED /* RMULoginScreen.h */,
 				9DA336C317BC7635000CDAED /* RMULoginScreen.m */,
+				9D178DF718027F4400924593 /* RMUOrderRatingScreen.h */,
+				9D178DF818027F4400924593 /* RMUOrderRatingScreen.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				9DC7EBE917CEEC6600DB77B2 /* RMUHomeScreen.m in Sources */,
 				9D7D23A117E9391C00836681 /* AFHTTPClient.m in Sources */,
 				9D7D23A217E9391C00836681 /* AFHTTPRequestOperation.m in Sources */,
+				9D178DF918027F4400924593 /* RMUOrderRatingScreen.m in Sources */,
 				9D7D23A317E9391C00836681 /* AFImageRequestOperation.m in Sources */,
 				9D7D23A417E9391C00836681 /* AFJSONRequestOperation.m in Sources */,
 				9D7D23A517E9391C00836681 /* AFNetworkActivityIndicatorManager.m in Sources */,

@@ -9,7 +9,7 @@
 #import "RMUMenuTableScreen.h"
 
 @interface RMUMenuTableScreen ()
-
+@property (nonatomic, strong) RMUMenu *menu;
 @end
 
 @implementation RMUMenuTableScreen
@@ -28,6 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -59,8 +60,16 @@
     
     RMUMeal *cellMeal = [self.menu.meals objectAtIndex:indexPath.row];
     
-    [cell setCurrentMeal:cellMeal];
+    [cell loadCurrentMeal:cellMeal];
     
     return cell;
 }
+
+#pragma mark - Interactivity
+
+- (IBAction)popBackFromButton:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

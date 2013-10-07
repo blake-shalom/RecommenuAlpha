@@ -14,5 +14,5 @@
 
 @interface RMUMenuTableScreen : UIViewController
 <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) RMUMenu *menu;
+- (void)setMenu:(RMUMenu *)menu;
 @end

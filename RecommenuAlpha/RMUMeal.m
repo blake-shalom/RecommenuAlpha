@@ -18,6 +18,7 @@
         self.mealDescription = description;
         self.mealLikes = likes;
         self.mealDislikes = dislikes;
+        self.selected = NO;
     }
     return self;
 }
