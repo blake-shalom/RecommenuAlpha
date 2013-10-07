@@ -10,6 +10,7 @@
 #import "RMUMenu.h"
 #import "RMUMenuCell.h"
 #import "RMUMeal.h"
+#import "RMUOrderRatingScreen.h"
 
 
 @interface RMUMenuTableScreen : UIViewController

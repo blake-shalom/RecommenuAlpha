@@ -360,6 +360,19 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" id="DzP-2V-g8g">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TEx-wr-voq">
+                                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="Confirm">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="Trk-TU-tWC" kind="push" identifier="menuToRatings" id="GW1-BG-3DC"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -372,10 +385,10 @@
             </objects>
             <point key="canvasLocation" x="989" y="106"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Rating Screen-->
         <scene sceneID="Yfv-d8-3Jg">
             <objects>
-                <viewController id="Trk-TU-tWC" sceneMemberID="viewController">
+                <viewController id="Trk-TU-tWC" customClass="RMUOrderRatingScreen" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l7N-6S-GLn"/>
                         <viewControllerLayoutGuide type="bottom" id="7Mj-Xo-osM"/>
@@ -389,7 +402,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="xh8-40-pg4">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="xh8-40-pg4" customClass="RMURatingCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xh8-40-pg4" id="QuC-El-11g">
@@ -433,8 +446,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="entreeLabel" destination="vwK-Qq-vpv" id="4Xv-Dx-7jK"/>
+                                            <outlet property="numDislikesLabel" destination="lj9-MY-iQg" id="hau-M7-Dgc"/>
+                                            <outlet property="numLikesLabel" destination="5ub-4S-JAY" id="6VU-Ci-pHw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Trk-TU-tWC" id="tcr-Nl-EFM"/>
+                                    <outlet property="delegate" destination="Trk-TU-tWC" id="op0-Dc-5Q5"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xa-zd-alb">
                                 <rect key="frame" x="0.0" y="5" width="320" height="44"/>
@@ -446,6 +468,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BTb-Px-5eY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myS-ly-mj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

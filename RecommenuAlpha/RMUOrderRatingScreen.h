@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RMURatingCell.h"
+#import "RMUMeal.h"
 
-@interface RMUOrderRatingScreen : UITableViewController
+@interface RMUOrderRatingScreen : UIViewController
+<UITableViewDataSource, UITableViewDelegate>
+
+@property NSMutableArray *orderedMeals;
 
 @end

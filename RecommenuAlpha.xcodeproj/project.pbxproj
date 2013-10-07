@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D178DF918027F4400924593 /* RMUOrderRatingScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D178DF818027F4400924593 /* RMUOrderRatingScreen.m */; };
+		9D178DFC1802950D00924593 /* RMURatingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D178DFB1802950D00924593 /* RMURatingCell.m */; };
 		9D7D23A117E9391C00836681 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D238F17E9391C00836681 /* AFHTTPClient.m */; };
 		9D7D23A217E9391C00836681 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D239117E9391C00836681 /* AFHTTPRequestOperation.m */; };
 		9D7D23A317E9391C00836681 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D239317E9391C00836681 /* AFImageRequestOperation.m */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		9D178DF718027F4400924593 /* RMUOrderRatingScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUOrderRatingScreen.h; sourceTree = "<group>"; };
 		9D178DF818027F4400924593 /* RMUOrderRatingScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUOrderRatingScreen.m; sourceTree = "<group>"; };
+		9D178DFA1802950D00924593 /* RMURatingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMURatingCell.h; sourceTree = "<group>"; };
+		9D178DFB1802950D00924593 /* RMURatingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMURatingCell.m; sourceTree = "<group>"; };
 		9D7D238E17E9391C00836681 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		9D7D238F17E9391C00836681 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		9D7D239017E9391C00836681 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -119,6 +122,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D178DFD180295B300924593 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9D178DFA1802950D00924593 /* RMURatingCell.h */,
+				9D178DFB1802950D00924593 /* RMURatingCell.m */,
+				9DA34F6C17FA817E00B55F95 /* RMUMenuCell.h */,
+				9DA34F6D17FA817E00B55F95 /* RMUMenuCell.m */,
+			);
+			name = "Table Cells";
+			sourceTree = "<group>";
+		};
 		9D7D238D17E9391C00836681 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,8 +200,7 @@
 				9DA336B717BC7635000CDAED /* RMUAppDelegate.m */,
 				9DA34F6917FA793B00B55F95 /* View Controllers */,
 				9DA336BF17BC7635000CDAED /* MainStoryboard.storyboard */,
-				9DA34F6C17FA817E00B55F95 /* RMUMenuCell.h */,
-				9DA34F6D17FA817E00B55F95 /* RMUMenuCell.m */,
+				9D178DFD180295B300924593 /* Table Cells */,
 				9DA34F6A17FA794E00B55F95 /* NSObjects */,
 				9DA34F6B17FA796700B55F95 /* Core Data */,
 				9DA336AE17BC7635000CDAED /* Supporting Files */,
@@ -329,6 +342,7 @@
 				9D7D23A617E9391C00836681 /* AFPropertyListRequestOperation.m in Sources */,
 				9D7D23A717E9391C00836681 /* AFURLConnectionOperation.m in Sources */,
 				9DBEDBDD17F35F72001762DF /* RMUMenu.m in Sources */,
+				9D178DFC1802950D00924593 /* RMURatingCell.m in Sources */,
 				9DBEDBE017F36C66001762DF /* RMUMeal.m in Sources */,
 				9D7D23A817E9391C00836681 /* AFXMLRequestOperation.m in Sources */,
 				9D7D23A917E9391C00836681 /* UIImageView+AFNetworking.m in Sources */,

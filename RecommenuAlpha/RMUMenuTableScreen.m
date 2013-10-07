@@ -72,4 +72,20 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - Segues
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier  isEqual: @"menuToRatings"]) {
+        RMUOrderRatingScreen *nextOrderScreen = segue.destinationViewController;
+        NSMutableArray *orderedMeals = [[NSMutableArray alloc]init];
+        for (RMUMeal *meal in self.menu.meals) {
+            if (meal.selected) {
+                [orderedMeals addObject:meal];
+            }
+        }
+        nextOrderScreen.orderedMeals = orderedMeals;
+    }
+}
+
 @end
