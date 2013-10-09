@@ -10,6 +10,8 @@
 
 @implementation RMURatingCell
 
+#pragma mark - 
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -33,5 +35,20 @@
     self.numDislikesLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealDislikes];
     self.numLikesLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealLikes];
 }
+
+#pragma mark - Interactivity
+
+- (IBAction)rateNegative:(id)sender
+{
+    self.currentMeal.mealDislikes++;
+    [self loadCurrentMeal:self.currentMeal];
+}
+
+- (IBAction)ratePositive:(id)sender
+{
+    self.currentMeal.mealLikes++;
+    [self loadCurrentMeal:self.currentMeal];
+}
+
 
 @end
