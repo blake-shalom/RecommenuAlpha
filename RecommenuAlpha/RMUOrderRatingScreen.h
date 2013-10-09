@@ -11,7 +11,7 @@
 #import "RMUMeal.h"
 
 @interface RMUOrderRatingScreen : UIViewController
-<UITableViewDataSource, UITableViewDelegate>
+<UITableViewDataSource, UITableViewDelegate, RMURatingCellDelegate>
 
 @property NSMutableArray *orderedMeals;
 

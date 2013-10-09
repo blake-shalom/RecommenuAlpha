@@ -489,6 +489,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="BTb-Px-5eY"/>
+                    <connections>
+                        <outlet property="orderTable" destination="5qc-bx-vKD" id="GTt-dF-jDB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myS-ly-mj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

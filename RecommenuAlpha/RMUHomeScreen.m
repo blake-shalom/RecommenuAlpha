@@ -129,10 +129,12 @@
         NSInteger numLikes = [mealLikes integerValue];
         NSString *mealDislikes = [meal objectForKey:@"dislikes"];
         NSInteger numDislikes = [mealDislikes integerValue];
+        NSString *mealID = [meal objectForKey:@"dsh_key"];
         RMUMeal *currentMeal = [[RMUMeal alloc]initWithName:mealName
                                             withDescription:mealDesc
                                                   withLikes:numLikes
-                                               withDislikes:numDislikes];
+                                               withDislikes:numDislikes
+                                             withIdentifier:mealID];
         [currentCourses addObject:currentMeal];
         
     }

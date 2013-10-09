@@ -9,6 +9,7 @@
 #import "RMUOrderRatingScreen.h"
 
 @interface RMUOrderRatingScreen ()
+@property (weak, nonatomic) IBOutlet UITableView *orderTable;
 
 @end
 
@@ -55,6 +56,9 @@
     }
 
     RMUMeal *cellMeal = self.orderedMeals[indexPath.row];
+    
+    cell.delegate = self;
+    cell.index = indexPath.row;
     
     [cell loadCurrentMeal:cellMeal];
     
@@ -111,5 +115,20 @@
 }
 
  */
+#pragma mark - Rating Cell Delegate
 
+- (void)deleteVideoAtIndex:(NSInteger)index
+{
+    [self.orderedMeals removeObjectAtIndex:index];
+    [self.orderTable beginUpdates];
+    [self.orderTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]]
+                           withRowAnimation:UITableViewRowAnimationFade];
+    [self.orderTable endUpdates];
+    [self performSelector:@selector(reloadData) withObject:self.orderTable afterDelay:0.3f];
+}
+
+- (void)reloadData
+{
+    [self.orderTable reloadData];
+}
 @end

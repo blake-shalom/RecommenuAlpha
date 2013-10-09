@@ -10,7 +10,7 @@
 
 @implementation RMUMeal
 
-- (id)initWithName:(NSString*) name withDescription:(NSString*) description withLikes:(NSInteger) likes withDislikes:(NSInteger) dislikes
+- (id)initWithName:(NSString*) name withDescription:(NSString*) description withLikes:(NSInteger) likes withDislikes:(NSInteger) dislikes withIdentifier:(NSString*)identifier
 {
     self = [super init];
     if (self) {
@@ -18,6 +18,7 @@
         self.mealDescription = description;
         self.mealLikes = likes;
         self.mealDislikes = dislikes;
+        self.mealID = identifier;
         self.selected = NO;
     }
     return self;

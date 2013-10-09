@@ -10,7 +10,7 @@
 
 @implementation RMURatingCell
 
-#pragma mark - 
+#pragma mark - init methods
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -42,13 +42,25 @@
 {
     self.currentMeal.mealDislikes++;
     [self loadCurrentMeal:self.currentMeal];
+    [self.delegate deleteVideoAtIndex:self.index];
 }
 
 - (IBAction)ratePositive:(id)sender
 {
     self.currentMeal.mealLikes++;
     [self loadCurrentMeal:self.currentMeal];
+    [self.delegate deleteVideoAtIndex:self.index];
 }
 
+#pragma mark - Networking
+
+- (void)postRatingToDatabaseWithRatingStatus: (NSInteger)ratingStatus
+{
+    NSString *mealID = self.currentMeal.mealID;
+    NSURL *restaurantURL = [NSURL URLWithString:[NSString
+                                                 stringWithFormat:(@"http://caisbalderas.webfactional.com/api/rating.json?dsh_key=%@&positive=%i"),mealID, ratingStatus]];
+    NSURLRequest *restRequest = [[NSURLRequest alloc]initWithURL:restaurantURL];
+    
+}
 
 @end

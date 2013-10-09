@@ -10,12 +10,13 @@
 
 @interface RMUMeal : NSObject
 
+@property NSString *mealID;
 @property NSString *mealName;
 @property NSString *mealDescription;
 @property NSInteger mealLikes;
 @property NSInteger mealDislikes;
 @property BOOL selected;
 
-- (id)initWithName:(NSString*) name withDescription:(NSString*) description withLikes:(NSInteger) likes withDislikes:(NSInteger) dislikes;
+- (id)initWithName:(NSString*) name withDescription:(NSString*) description withLikes:(NSInteger) likes withDislikes:(NSInteger) dislikes withIdentifier:(NSString*) identifier;
 
 @end
