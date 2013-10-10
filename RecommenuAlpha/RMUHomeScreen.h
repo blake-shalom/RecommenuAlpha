@@ -18,4 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *findMenuButton;
 
++ (RMUMenu*)parseJSONIntoMenu:(NSArray*)JSONArray withRestaurantName:(NSString*)restaurantName;
+
 @end

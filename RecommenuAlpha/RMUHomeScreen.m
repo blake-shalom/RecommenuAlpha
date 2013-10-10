@@ -119,7 +119,7 @@
                                              JSONRequestOperationWithRequest:restRequest
                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                  NSArray *mealArray = [JSON objectForKey:@"dishes"];
-                                                 RMUMenu *currentMenu = [self parseJSONIntoMenu:mealArray
+                                                 RMUMenu *currentMenu = [RMUHomeScreen parseJSONIntoMenu:mealArray
                                                                             withRestaurantName:restaurantName];
                                                  self.currentMenu = currentMenu;
                                                  [self performSegueWithIdentifier:@"homeToMenu" sender:self];
@@ -134,7 +134,7 @@
  *  Processes a given JSON item into a menu object
  */
 
-- (RMUMenu*)parseJSONIntoMenu:(NSArray*)JSONArray withRestaurantName:(NSString*)restaurantName {
++ (RMUMenu*)parseJSONIntoMenu:(NSArray*)JSONArray withRestaurantName:(NSString*)restaurantName {
     
     NSMutableArray *currentCourses = [[NSMutableArray alloc]init];
     for (NSDictionary *meal in JSONArray) {

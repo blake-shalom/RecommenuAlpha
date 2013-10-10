@@ -9,6 +9,8 @@
 #import "RMUFallbackScreen.h"
 
 @interface RMUFallbackScreen ()
+@property (weak, nonatomic) IBOutlet UITableView *fallbackTable;
+@property RMUMenu *currentMenu;
 
 @end
 
@@ -35,7 +37,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UITableView Data Source delegate
+#pragma mark - UITableView Data Source
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -52,6 +54,49 @@
     }
     [cell.textLabel setText:self.restaurants[indexPath.row]];
     return cell;
+}
+
+#pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *restaurantName = self.restaurants[indexPath.row];
+    NSURL *restaurantURL = [NSURL URLWithString:[NSString
+                                                 stringWithFormat:(@"http://caisbalderas.webfactional.com/api/dishlist.json")]];
+    NSURLRequest *restRequest = [[NSURLRequest alloc]initWithURL:restaurantURL];
+    AFJSONRequestOperation *restOperation = [AFJSONRequestOperation
+                                             JSONRequestOperationWithRequest:restRequest
+                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                 NSArray *mealArray = [JSON objectForKey:@"dishes"];
+                                                 RMUMenu *currentMenu = [RMUHomeScreen parseJSONIntoMenu:mealArray
+                                                                             withRestaurantName:restaurantName];
+                                                 self.currentMenu = currentMenu;
+                                                 [self performSegueWithIdentifier:@"fallbackToMenu" sender:self];
+                                             }
+                                             failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                 NSLog(@"ERROR: %@", error);
+                                             }];
+    [restOperation start];
+}
+
+#pragma mark - Interactivity
+
+- (IBAction)cancelActions:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"fallbackToMenu"]) {
+        RMUMenuTableScreen *nextMenu = segue.destinationViewController;
+        [nextMenu setMenu:self.currentMenu];
+    }
+    else {
+        NSLog(@"ERRRM UNDEFINED SEGUE");
+    }
 }
 
 @end
