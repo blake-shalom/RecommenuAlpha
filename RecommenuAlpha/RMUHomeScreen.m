@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Blake Ellingham. All rights reserved.
 //
 
+#define NUM_FALLBACK 5
+
 #import "RMUHomeScreen.h"
 
 @interface RMUHomeScreen ()
@@ -14,6 +16,8 @@
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) RMUMenu *currentMenu;
 @property (strong,nonatomic) NSString *restName;
+@property (strong,nonatomic) NSMutableArray *nextFiveRestaurants;
+
 @end
 
 @implementation RMUHomeScreen
@@ -34,9 +38,10 @@
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.distanceFilter = 150;
     self.location = [[CLLocation alloc]init];
     [self.locationManager startUpdatingLocation];
+    
+    self.nextFiveRestaurants = [[NSMutableArray alloc]initWithCapacity:NUM_FALLBACK];
 	// Do any additional setup after loading the view.
 }
 
@@ -72,7 +77,7 @@
     NSString *idString = @"YZVWMVDV1AFEHQ5N5DX4KFLCSVPXEC1L0KUQI45NQTF3IPXT";
     NSString *secretString = @"2GA3BI5S4Z10ONRUJRWA40OTYDED3LAGCUAXJDBBEUNR4JJN";
     NSURL *foursquareURL = [[NSURL alloc]initWithString:[NSString
-                                                         stringWithFormat: (@"https://api.foursquare.com/v2/venues/search?ll=%@&limit=10&intent=browse&radius=2000&categoryId=4d4b7105d754a06374d81259&client_id=%@&client_secret=%@&v=20130918"), latLongString, idString, secretString]];
+                                                         stringWithFormat: (@"https://api.foursquare.com/v2/venues/search?ll=%@&limit=10&intent=browse&radius=200&categoryId=4d4b7105d754a06374d81259&client_id=%@&client_secret=%@&v=20130918"), latLongString, idString, secretString]];
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:foursquareURL];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation
                                          JSONRequestOperationWithRequest:request
@@ -80,6 +85,11 @@
                                              NSDictionary *newDictionary = [JSON objectForKey:@"response"];
                                              NSArray *newArray = [newDictionary objectForKey:@"venues"];
                                              self.restName = [newArray[0] objectForKey:@"name"];
+                                             for (int i = 1; i <= NUM_FALLBACK; i++) {
+                                                 self.nextFiveRestaurants[i-1] = [newArray[i] objectForKey:@"name"];
+                                             }
+                                             
+                                             NSLog(@"%@", self.nextFiveRestaurants);
                                              UIAlertView *restaurantCheckAlert = [[UIAlertView alloc] initWithTitle:@"Restaurant Found!"
                                                                                                             message:[NSString stringWithFormat:(@"Are you at %@?"), self.restName]
                                                                                                            delegate:self
@@ -155,6 +165,10 @@
         RMUMenuTableScreen *newMenu = (RMUMenuTableScreen *) segue.destinationViewController;
         [newMenu setMenu:self.currentMenu];
     }
+    else if ([segue.identifier isEqual:@"homeToFallback"]) {
+        RMUFallbackScreen *newFallback = (RMUFallbackScreen *) segue.destinationViewController;
+        newFallback.restaurants = self.nextFiveRestaurants;
+    }
     else {
         NSLog(@"Unknown segue");
     }
@@ -168,7 +182,7 @@
         [self pullMenuFromRestaurant:self.restName];
     }
     else if (buttonIndex == 0) {
-        NSLog(@"It's in No??");
+        [self performSegueWithIdentifier:@"homeToFallback" sender:self];
     }
 }
 

@@ -11,6 +11,7 @@
 #import "RMUMenu.h"
 #import "RMUMeal.h"
 #import "RMUMenuTableScreen.h"
+#import "RMUFallbackScreen.h"
 
 @interface RMUHomeScreen : UIViewController
 <CLLocationManagerDelegate, UIAlertViewDelegate>

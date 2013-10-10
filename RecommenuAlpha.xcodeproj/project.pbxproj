@@ -38,6 +38,7 @@
 		9DA34F6E17FA817E00B55F95 /* RMUMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA34F6D17FA817E00B55F95 /* RMUMenuCell.m */; };
 		9DBEDBDD17F35F72001762DF /* RMUMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBEDBDC17F35F72001762DF /* RMUMenu.m */; };
 		9DBEDBE017F36C66001762DF /* RMUMeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBEDBDF17F36C66001762DF /* RMUMeal.m */; };
+		9DC2508C18065F4200ED5BBC /* RMUFallbackScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2508B18065F4200ED5BBC /* RMUFallbackScreen.m */; };
 		9DC7EBE917CEEC6600DB77B2 /* RMUHomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7EBE817CEEC6600DB77B2 /* RMUHomeScreen.m */; };
 		9DE44A2517BF02B6008ACF84 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE44A2417BF02B6008ACF84 /* CoreData.framework */; };
 		9DE44A2817BF074C008ACF84 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE44A2717BF074C008ACF84 /* User.m */; };
@@ -96,6 +97,8 @@
 		9DBEDBDC17F35F72001762DF /* RMUMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUMenu.m; sourceTree = "<group>"; };
 		9DBEDBDE17F36C66001762DF /* RMUMeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUMeal.h; sourceTree = "<group>"; };
 		9DBEDBDF17F36C66001762DF /* RMUMeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUMeal.m; sourceTree = "<group>"; };
+		9DC2508A18065F4200ED5BBC /* RMUFallbackScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUFallbackScreen.h; sourceTree = "<group>"; };
+		9DC2508B18065F4200ED5BBC /* RMUFallbackScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUFallbackScreen.m; sourceTree = "<group>"; };
 		9DC7EBE717CEEC6600DB77B2 /* RMUHomeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUHomeScreen.h; sourceTree = "<group>"; };
 		9DC7EBE817CEEC6600DB77B2 /* RMUHomeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMUHomeScreen.m; sourceTree = "<group>"; };
 		9DE44A2417BF02B6008ACF84 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -233,6 +236,8 @@
 				9DA336C317BC7635000CDAED /* RMULoginScreen.m */,
 				9D178DF718027F4400924593 /* RMUOrderRatingScreen.h */,
 				9D178DF818027F4400924593 /* RMUOrderRatingScreen.m */,
+				9DC2508A18065F4200ED5BBC /* RMUFallbackScreen.h */,
+				9DC2508B18065F4200ED5BBC /* RMUFallbackScreen.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 				9DC7EBE917CEEC6600DB77B2 /* RMUHomeScreen.m in Sources */,
 				9D7D23A117E9391C00836681 /* AFHTTPClient.m in Sources */,
 				9D7D23A217E9391C00836681 /* AFHTTPRequestOperation.m in Sources */,
+				9DC2508C18065F4200ED5BBC /* RMUFallbackScreen.m in Sources */,
 				9D178DF918027F4400924593 /* RMUOrderRatingScreen.m in Sources */,
 				9D7D23A317E9391C00836681 /* AFImageRequestOperation.m in Sources */,
 				9D7D23A417E9391C00836681 /* AFJSONRequestOperation.m in Sources */,
