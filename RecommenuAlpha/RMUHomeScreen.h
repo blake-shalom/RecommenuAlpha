@@ -13,7 +13,7 @@
 #import "RMUMenuTableScreen.h"
 
 @interface RMUHomeScreen : UIViewController
-<CLLocationManagerDelegate>
+<CLLocationManagerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *findMenuButton;
 

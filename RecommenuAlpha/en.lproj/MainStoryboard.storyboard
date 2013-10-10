@@ -267,6 +267,24 @@
             </objects>
             <point key="canvasLocation" x="451" y="106"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="nVe-xh-hvz">
+            <objects>
+                <viewController id="dh8-LC-oq1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bs9-i1-Ol1"/>
+                        <viewControllerLayoutGuide type="bottom" id="YjT-ck-8ia"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oqi-6e-iH1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WhJ-5f-LDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1031" y="565"/>
+        </scene>
         <!--Menu Table Screen - Menu-->
         <scene sceneID="50g-Zb-hbT">
             <objects>
@@ -383,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3m-2f-Ri2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989" y="106"/>
+            <point key="canvasLocation" x="1031" y="-238"/>
         </scene>
         <!--Order Rating Screen-->
         <scene sceneID="Yfv-d8-3Jg">
@@ -495,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myS-ly-mj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="106"/>
+            <point key="canvasLocation" x="1625" y="-238"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

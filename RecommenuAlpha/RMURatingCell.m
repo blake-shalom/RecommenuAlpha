@@ -42,6 +42,7 @@
 {
     self.currentMeal.mealDislikes++;
     [self loadCurrentMeal:self.currentMeal];
+    [self postRatingToDatabaseWithRatingStatus:ratingStatusNegative];
     [self.delegate deleteVideoAtIndex:self.index];
 }
 
@@ -49,6 +50,7 @@
 {
     self.currentMeal.mealLikes++;
     [self loadCurrentMeal:self.currentMeal];
+    [self postRatingToDatabaseWithRatingStatus:ratingStatusPositive];
     [self.delegate deleteVideoAtIndex:self.index];
 }
 
@@ -60,6 +62,14 @@
     NSURL *restaurantURL = [NSURL URLWithString:[NSString
                                                  stringWithFormat:(@"http://caisbalderas.webfactional.com/api/rating.json?dsh_key=%@&positive=%i"),mealID, ratingStatus]];
     NSURLRequest *restRequest = [[NSURLRequest alloc]initWithURL:restaurantURL];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:restRequest
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                            
+                                                                                        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                            NSLog(@"ERROR IN POST RATING: %@", error);
+                                                                                        }];
+    [operation start];
+
     
 }
 

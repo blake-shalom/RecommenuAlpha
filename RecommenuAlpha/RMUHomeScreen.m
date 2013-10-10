@@ -13,7 +13,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) RMUMenu *currentMenu;
-
+@property (strong,nonatomic) NSString *restName;
 @end
 
 @implementation RMUHomeScreen
@@ -79,9 +79,14 @@
                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                              NSDictionary *newDictionary = [JSON objectForKey:@"response"];
                                              NSArray *newArray = [newDictionary objectForKey:@"venues"];
-                                             NSString *restString = [newArray[0] objectForKey:@"name"];
-                                             NSLog(@"%@", restString);
-                                             [self pullMenuFromRestaurant:restString];
+                                             self.restName = [newArray[0] objectForKey:@"name"];
+                                             UIAlertView *restaurantCheckAlert = [[UIAlertView alloc] initWithTitle:@"Restaurant Found!"
+                                                                                                            message:[NSString stringWithFormat:(@"Are you at %@?"), self.restName]
+                                                                                                           delegate:self
+                                                                                                  cancelButtonTitle:@"NO"
+                                                                                                  otherButtonTitles:@"YES", nil];
+                                             [restaurantCheckAlert show];
+                                             
                                          }
                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                              NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
@@ -154,6 +159,19 @@
         NSLog(@"Unknown segue");
     }
 }
+
+#pragma mark - UIAlertView methods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self pullMenuFromRestaurant:self.restName];
+    }
+    else if (buttonIndex == 0) {
+        NSLog(@"It's in No??");
+    }
+}
+
 @end
 
 
