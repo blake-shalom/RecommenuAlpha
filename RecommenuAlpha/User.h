@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * city;
+@property (nonatomic, retain) NSString * locationURI;
 @property (nonatomic, retain) NSNumber * maleFemale;
 @property (nonatomic, retain) NSNumber * isLoggedIn;
 @property (nonatomic, retain) NSSet *userToRatings;

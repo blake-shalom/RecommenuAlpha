@@ -113,8 +113,7 @@
 
 - (IBAction)signUpUser:(id)sender
 {
-//    RMUAppDelegate *delegate = (RMUAppDelegate*) [[UIApplication sharedApplication] delegate];
-    /* UNCOMMMENT FOR COREDATA
+    RMUAppDelegate *delegate = (RMUAppDelegate*) [[UIApplication sharedApplication] delegate];
     User *currentUser = (User*) [NSEntityDescription insertNewObjectForEntityForName:@"User"
                                                               inManagedObjectContext:delegate.managedObjectContext];
     
@@ -125,32 +124,42 @@
     currentUser.isLoggedIn = NO;
     
     currentUser.maleFemale = [NSNumber numberWithInt:self.maleFemaleSeg.selectedSegmentIndex];
+    NSString *gender;
     
-    NSError *error;
-    if (![delegate.managedObjectContext save:&error])
-        NSLog(@"Error Saving %@", error);
+    if (currentUser.maleFemale == 0)
+        gender = @"male";
+    else
+        gender = @"female";
     
-    NSURL *userURL = [NSURL URLWithString:[NSString stringWithFormat:(@"http://caisbalderas.webfactional.com/api/registerpass.json?usr_key=1&fname=%@&lname=%@&email=%@&city=%@"),
-                                           currentUser.firstName, currentUser.lastName,
-                                           currentUser.email, currentUser.city]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:userURL];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON){
-                                                                                            NSLog(@"Status: %@", JSON);
-                                                                                        }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
-                                                                                            NSLog(@"FAILURE: %@", error);
-                                                                                        }];
-    [operation start];
-    */
+//    NSError *error;
+//    if (![delegate.managedObjectContext save:&error])
+//        NSLog(@"Error Saving %@", error);
+
+#warning RecommenuAPI CALL POST USER
+    
+    NSURL *userURL = [NSURL URLWithString:@"http://recommenu.caisbalderas.com//api/v1/create_user/"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc]initWithBaseURL:userURL];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+    NSDictionary *user = @{@"username" : currentUser.firstName,
+                           @"first_name" : currentUser.firstName,
+                           @"last_name" : currentUser.lastName,
+                           @"password" : @"poop",
+                           @"email" : currentUser.email};
+    NSDictionary *params = @{@"city": currentUser.city,
+                             @"gender": gender,
+                             @"user": user};
+    [httpClient postPath:@""
+              parameters:params
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                     TODO cache the response vars in some sort of persistent data
+                 }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     NSLog(@"ERROR DURING POSTUSER: %@ ", error);
+                     // TODO do some fail safe
+                 }];
+    
     [self performSegueWithIdentifier:@"loginToHome" sender:self];
     
 }
 
 @end
-
-
-
-
-
-
-

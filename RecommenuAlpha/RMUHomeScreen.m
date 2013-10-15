@@ -7,6 +7,7 @@
 //
 
 #define NUM_FALLBACK 5
+#define START_RADIUS 100
 
 #import "RMUHomeScreen.h"
 
@@ -69,15 +70,16 @@
 {
     
     NSLog(@"LOCATING.....");
+    
     CGFloat lat = self.location.coordinate.latitude;
     CGFloat longi = self.location.coordinate.longitude;
     
-    [self.locationManager stopUpdatingLocation];
     NSString *latLongString = [NSString stringWithFormat:(@"%f,%f"), lat, longi];
     NSString *idString = @"YZVWMVDV1AFEHQ5N5DX4KFLCSVPXEC1L0KUQI45NQTF3IPXT";
     NSString *secretString = @"2GA3BI5S4Z10ONRUJRWA40OTYDED3LAGCUAXJDBBEUNR4JJN";
     NSURL *foursquareURL = [[NSURL alloc]initWithString:[NSString
-                                                         stringWithFormat: (@"https://api.foursquare.com/v2/venues/search?ll=%@&limit=10&intent=browse&radius=200&categoryId=4d4b7105d754a06374d81259&client_id=%@&client_secret=%@&v=20130918"), latLongString, idString, secretString]];
+                                                         stringWithFormat: (@"https://api.foursquare.com/v2/venues/search?ll=%@&limit=15&intent=browse&radius=%i&categoryId=4d4b7105d754a06374d81259&client_id=%@&client_secret=%@&v=20130918"),
+                                                         latLongString, 200, idString, secretString]];
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:foursquareURL];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation
                                          JSONRequestOperationWithRequest:request
@@ -85,7 +87,7 @@
                                              NSDictionary *newDictionary = [JSON objectForKey:@"response"];
                                              NSArray *newArray = [newDictionary objectForKey:@"venues"];
                                              self.restName = [newArray[0] objectForKey:@"name"];
-                                             for (int i = 1; i <= NUM_FALLBACK; i++) {
+                                             for (int i = 1; i <= newArray.count; i++) {
                                                  self.nextFiveRestaurants[i-1] = [newArray[i] objectForKey:@"name"];
                                              }
                                              
@@ -105,6 +107,7 @@
     
     
 }
+
 
 /*
  *  Pulls a menu from a given restaurant
@@ -127,7 +130,27 @@
                                              failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                  NSLog(@"ERROR: %@", error);
                                              }];
+    [self.locationManager stopUpdatingLocation];
     [restOperation start];
+    
+#warning RecommenuAPI call GET MENU
+
+//    NSURL *menuURL = [NSURL URLWithString:[NSString
+//                                           stringWithFormat:(@"http://recommenu.caisbalderas.com//api/v1/restaurants/")]];
+//    AFHTTPClient *httpClient = [[AFHTTPClient alloc]initWithBaseURL:menuURL];
+//    NSDictionary *params = @{};
+//    [httpClient getPath:@""
+//             parameters:params
+//                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                    NSArray *mealArray = [responseObject objectForKey:@"dishes"];
+//                    RMUMenu *currentMenu = [RMUHomeScreen parseJSONIntoMenu:mealArray
+//                                                         withRestaurantName:restaurantName];
+//                    self.currentMenu = currentMenu;
+//                    [self performSegueWithIdentifier:@"homeToMenu" sender:self];
+//                }
+//                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                    NSLog(@"ERROR DURING GET MENU: %@", error);
+//                }];
 }
 
 /*

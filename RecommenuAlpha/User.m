@@ -11,6 +11,7 @@
 
 @implementation User
 
+@dynamic locationURI;
 @dynamic firstName;
 @dynamic lastName;
 @dynamic email;
