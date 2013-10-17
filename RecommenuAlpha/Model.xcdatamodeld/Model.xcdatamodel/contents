@@ -7,7 +7,7 @@
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locationURI" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="maleFemale" optional="YES" attributeType="Boolean" syncable="YES"/>

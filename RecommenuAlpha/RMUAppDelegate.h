@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+#import "RMUHomeScreen.h"
+#import "RMULoginScreen.h"
 
 @interface RMUAppDelegate : UIResponder <UIApplicationDelegate>{
     NSManagedObjectModel *managedObjectModel;

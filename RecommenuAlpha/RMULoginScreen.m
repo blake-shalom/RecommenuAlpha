@@ -123,7 +123,7 @@
     currentUser.lastName = self.lastNameField.text;
     currentUser.email = self.emailField.text;
     currentUser.city = self.cityTextField.text;
-    currentUser.isLoggedIn = NO;
+    currentUser.isLoggedIn = [NSNumber  numberWithBool:YES];
     
     currentUser.maleFemale = [NSNumber numberWithInt:self.maleFemaleSeg.selectedSegmentIndex];
     NSString *gender;
@@ -133,9 +133,9 @@
     else
         gender = @"female";
     
-//    NSError *error;
-//    if (![delegate.managedObjectContext save:&error])
-//        NSLog(@"Error Saving %@", error);
+    NSError *error;
+    if (![delegate.managedObjectContext save:&error])
+        NSLog(@"Error Saving %@", error);
 
 #warning RecommenuAPI CALL POST USER
     

@@ -15,17 +15,13 @@
                             <outlet property="delegate" destination="rfl-sk-LGe" id="Vn0-Tm-ebK"/>
                         </connections>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Shw-me-80F">
-                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="t0v-oD-UGb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15W-Bc-XQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-569" y="106"/>
+            <point key="canvasLocation" x="199" y="-594"/>
         </scene>
         <!--Login Screen-->
         <scene sceneID="5">
@@ -218,7 +214,7 @@
         <!--Home Screen - Home-->
         <scene sceneID="Ghg-Ic-vvT">
             <objects>
-                <viewController id="U0m-Kb-UOG" customClass="RMUHomeScreen" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U0m-Kb-UOG" customClass="RMUHomeScreen" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QPn-z0-BT9"/>
                         <viewControllerLayoutGuide type="bottom" id="cZf-Fb-DR7"/>
@@ -228,10 +224,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23K-xe-Lvh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="317" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVH-QZ-LdE">
-                                        <rect key="frame" x="110" y="269" width="100" height="30"/>
+                                        <rect key="frame" x="109" y="269" width="100" height="30"/>
                                         <state key="normal" title="RECOMMEND">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -398,7 +394,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="irI-c4-6jK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="irI-c4-6jK">
                                 <rect key="frame" x="0.0" y="76" width="320" height="492"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -429,7 +425,7 @@
                                     <outlet property="delegate" destination="ymp-Sg-VYi" id="9nk-lQ-nof"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qu-v5-IiL">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7qu-v5-IiL">
                                 <rect key="frame" x="0.0" y="32" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -573,7 +569,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="F6N-MP-nRh"/>
-        <segue reference="ISg-h8-j0N"/>
+        <segue reference="3zH-2f-2TQ"/>
+        <segue reference="fTB-oF-qig"/>
     </inferredMetricsTieBreakers>
 </document>

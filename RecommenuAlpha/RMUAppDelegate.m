@@ -66,8 +66,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSFetchRequest *request = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+    NSError *error;
+    NSArray *fetchedArray = [self.managedObjectContext executeFetchRequest:request error:&error];
+    BOOL hasLoggedIn;
+    if (fetchedArray == nil)
+        hasLoggedIn = NO;
+    else {
+        User *currentUser = fetchedArray[0];
+        if (currentUser.isLoggedIn)
+            hasLoggedIn = YES;
+        else
+            hasLoggedIn = NO;
+    }
     
-    
+    if (hasLoggedIn){
+        RMULoginScreen *mvc = (RMULoginScreen*) self.window.rootViewController;
+        RMUHomeScreen *hvc = (RMUHomeScreen*) [mvc.storyboard instantiateViewControllerWithIdentifier:@"homeScreen"];
+        [self.window setRootViewController:hvc];
+    }
     return YES;
 }
 							
