@@ -75,7 +75,7 @@
     CGFloat longi = self.location.coordinate.longitude;
     
     NSString *latLongString = [NSString stringWithFormat:(@"%f,%f"), lat, longi];
-    NSString *idString = @"YZVWMVDV1AFEHQ5N5DX4KFLCSVPXEC1L0KUQI45NQTF3IPXT";
+    NSString *idString = @"YZVWMVDV1AFEHQ5N5DX4KFLCSVPXEC1L0KUQI45NQTF3IPXT"; // TODO save as USERDEFAULTS
     NSString *secretString = @"2GA3BI5S4Z10ONRUJRWA40OTYDED3LAGCUAXJDBBEUNR4JJN";
     NSURL *foursquareURL = [[NSURL alloc]initWithString:[NSString
                                                          stringWithFormat: (@"https://api.foursquare.com/v2/venues/search?ll=%@&limit=15&intent=browse&radius=%i&categoryId=4d4b7105d754a06374d81259&client_id=%@&client_secret=%@&v=20130918"),

@@ -109,7 +109,9 @@
     [self.view bringSubviewToFront:self.dropDownButton];
 }
 
-
+/*
+ *  From the forms entered in the Textfields the method signs up a user
+ */
 
 - (IBAction)signUpUser:(id)sender
 {
@@ -159,7 +161,6 @@
                  }];
     
     [self performSegueWithIdentifier:@"loginToHome" sender:self];
-    
 }
 
 @end
