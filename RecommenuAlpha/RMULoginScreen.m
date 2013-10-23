@@ -115,52 +115,64 @@
 
 - (IBAction)signUpUser:(id)sender
 {
-    RMUAppDelegate *delegate = (RMUAppDelegate*) [[UIApplication sharedApplication] delegate];
-    User *currentUser = (User*) [NSEntityDescription insertNewObjectForEntityForName:@"User"
-                                                              inManagedObjectContext:delegate.managedObjectContext];
+    if (self.firstNameField.text.length == 0 || self.lastNameField.text.length == 0 ||
+        self.emailField.text.length == 0 || self.cityTextField.text.length == 0) {
+        UIAlertView *formsCheckAlert = [[UIAlertView alloc] initWithTitle:@"Enter all fields"
+                                                                  message:@"Fill in all fields before creating your user"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Return"
+                                                        otherButtonTitles:nil];
+        [formsCheckAlert show];
+    }
     
-    currentUser.firstName = self.firstNameField.text;
-    currentUser.lastName = self.lastNameField.text;
-    currentUser.email = self.emailField.text;
-    currentUser.city = self.cityTextField.text;
-    currentUser.isLoggedIn = [NSNumber  numberWithBool:YES];
-    
-    currentUser.maleFemale = [NSNumber numberWithInt:self.maleFemaleSeg.selectedSegmentIndex];
-    NSString *gender;
-    
-    if (currentUser.maleFemale == 0)
-        gender = @"male";
-    else
-        gender = @"female";
-    
-    NSError *error;
-    if (![delegate.managedObjectContext save:&error])
-        NSLog(@"Error Saving %@", error);
-
+    else {
+        RMUAppDelegate *delegate = (RMUAppDelegate*) [[UIApplication sharedApplication] delegate];
+        User *currentUser = (User*) [NSEntityDescription insertNewObjectForEntityForName:@"User"
+                                                                  inManagedObjectContext:delegate.managedObjectContext];
+        
+        currentUser.firstName = self.firstNameField.text;
+        currentUser.lastName = self.lastNameField.text;
+        currentUser.email = self.emailField.text;
+        currentUser.city = self.cityTextField.text;
+        currentUser.isLoggedIn = [NSNumber  numberWithBool:YES];
+        
+        currentUser.maleFemale = [NSNumber numberWithInt:self.maleFemaleSeg.selectedSegmentIndex];
+        NSString *gender;
+        
+        if (currentUser.maleFemale == 0)
+            gender = @"male";
+        else
+            gender = @"female";
+        
+        NSError *error;
+        if (![delegate.managedObjectContext save:&error])
+            NSLog(@"Error Saving %@", error);
+        
 #warning RecommenuAPI CALL POST USER
-    
-    NSURL *userURL = [NSURL URLWithString:@"http://recommenu.caisbalderas.com//api/v1/create_user/"];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc]initWithBaseURL:userURL];
-    [httpClient setParameterEncoding:AFJSONParameterEncoding];
-    NSDictionary *user = @{@"username" : currentUser.firstName,
-                           @"first_name" : currentUser.firstName,
-                           @"last_name" : currentUser.lastName,
-                           @"password" : @"poop",
-                           @"email" : currentUser.email};
-    NSDictionary *params = @{@"city": currentUser.city,
-                             @"gender": gender,
-                             @"user": user};
-    [httpClient postPath:@""
-              parameters:params
-                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                     TODO cache the response vars in some sort of persistent data
-                 }
-                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                     NSLog(@"ERROR DURING POSTUSER: %@ ", error);
-                     // TODO do some fail safe
-                 }];
-    
-    [self performSegueWithIdentifier:@"loginToHome" sender:self];
+        
+        NSURL *userURL = [NSURL URLWithString:@"http://recommenu.caisbalderas.com//api/v1/create_user/"];
+        AFHTTPClient *httpClient = [[AFHTTPClient alloc]initWithBaseURL:userURL];
+        [httpClient setParameterEncoding:AFJSONParameterEncoding];
+        NSDictionary *user = @{@"username" : currentUser.firstName,
+                               @"first_name" : currentUser.firstName,
+                               @"last_name" : currentUser.lastName,
+                               @"password" : @"poop",
+                               @"email" : currentUser.email};
+        NSDictionary *params = @{@"city": currentUser.city,
+                                 @"gender": gender,
+                                 @"user": user};
+        [httpClient postPath:@""
+                  parameters:params
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         //                     TODO cache the response vars in some sort of persistent data
+                     }
+                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"ERROR DURING POSTUSER: %@ ", error);
+                         // TODO do some fail safe
+                     }];
+        
+        [self performSegueWithIdentifier:@"loginToHome" sender:self];
+    }
 }
 
 @end

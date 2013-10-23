@@ -72,7 +72,7 @@
     NSError *error;
     NSArray *fetchedArray = [self.managedObjectContext executeFetchRequest:request error:&error];
     BOOL hasLoggedIn;
-    if (fetchedArray == nil)
+    if (fetchedArray.count == 0)
         hasLoggedIn = NO;
     else {
         User *currentUser = fetchedArray[0];
