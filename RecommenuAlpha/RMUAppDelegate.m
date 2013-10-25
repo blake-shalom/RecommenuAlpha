@@ -72,8 +72,10 @@
     NSError *error;
     NSArray *fetchedArray = [self.managedObjectContext executeFetchRequest:request error:&error];
     BOOL hasLoggedIn;
-    if (fetchedArray.count == 0)
+    if (fetchedArray.count == 0){
         hasLoggedIn = NO;
+        NSLog(@"fetched array count: %i", fetchedArray.count);
+    }
     else {
         User *currentUser = fetchedArray[0];
         if (currentUser.isLoggedIn)
@@ -83,9 +85,10 @@
     }
     
     if (hasLoggedIn){
-        RMULoginScreen *mvc = (RMULoginScreen*) self.window.rootViewController;
-        RMUHomeScreen *hvc = (RMUHomeScreen*) [mvc.storyboard instantiateViewControllerWithIdentifier:@"homeScreen"];
-        [self.window setRootViewController:hvc];
+        UINavigationController *nvc = (UINavigationController*) self.window.rootViewController;
+        
+        RMUHomeScreen *hvc = (RMUHomeScreen*) [nvc.storyboard instantiateViewControllerWithIdentifier:@"homeScreen"];
+        nvc.viewControllers = [NSArray arrayWithObjects:hvc, nil];
     }
     return YES;
 }

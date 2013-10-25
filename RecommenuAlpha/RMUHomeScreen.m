@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Blake Ellingham. All rights reserved.
 //
 
-#define NUM_FALLBACK 5
+#define NUM_FALLBACK 10
 #define START_RADIUS 100
 
 #import "RMUHomeScreen.h"
@@ -71,43 +71,82 @@
     
     NSLog(@"LOCATING.....");
     
+    [self findRestaurantWithRadius:10];
+    
+}
+
+- (void)findRestaurantWithRadius:(NSInteger) radius
+{
+    NSLog(@"Radius: %i", radius);
     CGFloat lat = self.location.coordinate.latitude;
     CGFloat longi = self.location.coordinate.longitude;
-    
     NSString *latLongString = [NSString stringWithFormat:(@"%f,%f"), lat, longi];
     NSString *idString = @"YZVWMVDV1AFEHQ5N5DX4KFLCSVPXEC1L0KUQI45NQTF3IPXT"; // TODO save as USERDEFAULTS
     NSString *secretString = @"2GA3BI5S4Z10ONRUJRWA40OTYDED3LAGCUAXJDBBEUNR4JJN";
     NSURL *foursquareURL = [[NSURL alloc]initWithString:[NSString
                                                          stringWithFormat: (@"https://api.foursquare.com/v2/venues/search?ll=%@&limit=15&intent=browse&radius=%i&categoryId=4d4b7105d754a06374d81259&client_id=%@&client_secret=%@&v=20130918"),
-                                                         latLongString, 200, idString, secretString]];
+                                                         latLongString, radius, idString, secretString]];
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:foursquareURL];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation
                                          JSONRequestOperationWithRequest:request
                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                              NSDictionary *newDictionary = [JSON objectForKey:@"response"];
                                              NSArray *newArray = [newDictionary objectForKey:@"venues"];
-                                             self.restName = [newArray[0] objectForKey:@"name"];
-                                             for (int i = 1; i <= newArray.count; i++) {
-                                                 self.nextFiveRestaurants[i-1] = [newArray[i] objectForKey:@"name"];
+                                             if (newArray.count == 0) {
+                                                 [self findRestaurantWithRadius:radius * 2];
                                              }
+                                             else {
+                                             self.restName = [newArray[0] objectForKey:@"name"];
                                              
-                                             NSLog(@"%@", self.nextFiveRestaurants);
                                              UIAlertView *restaurantCheckAlert = [[UIAlertView alloc] initWithTitle:@"Restaurant Found!"
                                                                                                             message:[NSString stringWithFormat:(@"Are you at %@?"), self.restName]
                                                                                                            delegate:self
                                                                                                   cancelButtonTitle:@"NO"
                                                                                                   otherButtonTitles:@"YES", nil];
                                              [restaurantCheckAlert show];
+                                             }
                                              
                                          }
                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                              NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
                                          }];
     [operation start];
-    
-    
 }
 
+- (void)findFallbackRestaurantsWithRadius:(NSInteger) radius
+{
+    NSLog(@"Radius: %i", radius);
+    CGFloat lat = self.location.coordinate.latitude;
+    CGFloat longi = self.location.coordinate.longitude;
+    NSString *latLongString = [NSString stringWithFormat:(@"%f,%f"), lat, longi];
+    NSString *idString = @"YZVWMVDV1AFEHQ5N5DX4KFLCSVPXEC1L0KUQI45NQTF3IPXT"; // TODO save as USERDEFAULTS
+    NSString *secretString = @"2GA3BI5S4Z10ONRUJRWA40OTYDED3LAGCUAXJDBBEUNR4JJN";
+    NSURL *foursquareURL = [[NSURL alloc]initWithString:[NSString
+                                                         stringWithFormat: (@"https://api.foursquare.com/v2/venues/search?ll=%@&limit=15&intent=browse&radius=%i&categoryId=4d4b7105d754a06374d81259&client_id=%@&client_secret=%@&v=20130918"),
+                                                         latLongString, radius, idString, secretString]];
+    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:foursquareURL];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:request
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                             NSDictionary *newDictionary = [JSON objectForKey:@"response"];
+                                             NSArray *newArray = [newDictionary objectForKey:@"venues"];
+                                             if (newArray.count < NUM_FALLBACK) {
+                                                 [self findFallbackRestaurantsWithRadius:radius * 2];
+                                             }
+                                             else {
+                                                 for (int i = 0; i < NUM_FALLBACK; i++) {
+                                                     self.nextFiveRestaurants[i] = [newArray[i] objectForKey:@"name"];
+                                                 }
+                                                 [self.locationManager stopUpdatingLocation];
+                                                 [self performSegueWithIdentifier:@"homeToFallback" sender:self];
+                                             }
+                                             
+                                         }
+                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                             NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
+                                         }];
+    [operation start];
+}
 
 /*
  *  Pulls a menu from a given restaurant
@@ -205,7 +244,7 @@
         [self pullMenuFromRestaurant:self.restName];
     }
     else if (buttonIndex == 0) {
-        [self performSegueWithIdentifier:@"homeToFallback" sender:self];
+        [self findFallbackRestaurantsWithRadius:100];
     }
 }
 
