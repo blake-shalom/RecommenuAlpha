@@ -15,4 +15,5 @@
     #import <MobileCoreServices/MobileCoreServices.h>
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <CoreLocation/CoreLocation.h>
+    #import "UIColor+RMUColors.h"
 #endif

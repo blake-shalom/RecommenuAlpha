@@ -18,6 +18,7 @@
 @property (strong, nonatomic) RMUMenu *currentMenu;
 @property (strong,nonatomic) NSString *restName;
 @property (strong,nonatomic) NSMutableArray *nextFiveRestaurants;
+@property (weak, nonatomic) IBOutlet UIView *toolbar;
 
 @end
 
@@ -36,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.toolbar setBackgroundColor:[UIColor RMUGreyToolbarColor]];
+    [self.findMenuButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
