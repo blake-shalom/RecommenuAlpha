@@ -22,8 +22,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *dropDownButton;
+@property (weak, nonatomic) IBOutlet UIView *topToolbar;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 
 @property (strong,nonatomic) User *currentUser;
+@property BOOL isTextEditing;
 @end
 
 @implementation RMULoginScreen
@@ -31,8 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
+    [self.topToolbar setBackgroundColor:[UIColor RMUGreyToolbarColor]];
+    [self.signUpButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
+    self.isTextEditing = NO;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -67,6 +71,7 @@
 
 - (void)slideDownView
 {
+    self.isTextEditing =NO;
     self.topConstraint.constant += HEIGHT_OF_KEYBOARD;
     self.bottomConstraint.constant += HEIGHT_OF_KEYBOARD;
     
@@ -104,7 +109,9 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     // slide up the view
-    [self slideUpView];
+    if (!self.isTextEditing)
+        [self slideUpView];
+    self.isTextEditing = YES;
     [self.dropDownButton setHidden:NO];
     [self.view bringSubviewToFront:self.dropDownButton];
 }
