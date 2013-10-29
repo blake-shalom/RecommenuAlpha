@@ -9,6 +9,7 @@
 #import "RMUMenuTableScreen.h"
 
 @interface RMUMenuTableScreen ()
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (nonatomic, strong) RMUMenu *menu;
 @end
 
@@ -26,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.doneButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
 	// Do any additional setup after loading the view.
 }
 

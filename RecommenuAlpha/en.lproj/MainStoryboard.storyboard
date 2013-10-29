@@ -337,6 +337,10 @@
                                                         <action selector="selectOrderState:" destination="aUQ-b5-6Z7" eventType="touchUpInside" id="mPH-eN-PKm"/>
                                                     </connections>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dotted_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="tvC-kY-5kZ">
+                                                    <rect key="frame" x="72" y="4" width="28" height="74"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -390,19 +394,22 @@
                                 <rect key="frame" x="0.0" y="509" width="320" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.4940649453" green="0.48963408069999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="DONE">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Trk-TU-tWC" kind="push" id="jhM-qG-yVw"/>
+                                    <segue destination="Trk-TU-tWC" kind="push" identifier="menuToRatings" id="jhM-qG-yVw"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Menu" id="syg-4i-wVv"/>
+                    <connections>
+                        <outlet property="doneButton" destination="m7O-N6-eyw" id="A6e-nF-Hjl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3m-2f-Ri2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -517,7 +524,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B33-US-PSa">
-                                                    <rect key="frame" x="293" y="15" width="27" height="30"/>
+                                                    <rect key="frame" x="101" y="40" width="27" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="+">
                                                         <color key="titleColor" red="0.31963966488303408" green="1" blue="0.35787333527088216" alpha="1" colorSpace="calibratedRGB"/>
@@ -528,7 +535,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-HF-G5q">
-                                                    <rect key="frame" x="0.0" y="15" width="30" height="30"/>
+                                                    <rect key="frame" x="136" y="40" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="-">
                                                         <color key="titleColor" red="1" green="0.18918886853999384" blue="0.14576246576981888" alpha="1" colorSpace="calibratedRGB"/>
@@ -538,15 +545,15 @@
                                                         <action selector="rateNegative:" destination="xh8-40-pg4" eventType="touchUpInside" id="0S2-94-73X"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Entree Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwK-Qq-vpv">
-                                                    <rect key="frame" x="66" y="19" width="199" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Entree Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwK-Qq-vpv">
+                                                    <rect key="frame" x="101" y="15" width="199" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lj9-MY-iQg">
-                                                    <rect key="frame" x="27" y="19" width="31" height="21"/>
+                                                    <rect key="frame" x="254" y="44" width="31" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
@@ -557,6 +564,10 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dotted_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="W3U-7h-5kf">
+                                                    <rect key="frame" x="78" y="-4" width="28" height="74"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -575,7 +586,7 @@
                                 <rect key="frame" x="0.0" y="509" width="320" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.4940649453" green="0.48963408069999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="DONE">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -608,7 +619,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="back_arrow.png"/>
                                                 <connections>
-                                                    <action selector="popBackFromButton:" destination="Yn2-7b-2Xa" eventType="touchUpInside" id="Xw0-kn-zCc"/>
+                                                    <action selector="popBackToMenu:" destination="Trk-TU-tWC" eventType="touchUpInside" id="R1l-nr-maG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -622,6 +633,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="BTb-Px-5eY"/>
                     <connections>
+                        <outlet property="doneButton" destination="Ezc-CG-IFq" id="7tP-Ew-Umd"/>
                         <outlet property="orderTable" destination="5qc-bx-vKD" id="GTt-dF-jDB"/>
                     </connections>
                 </viewController>
@@ -637,6 +649,8 @@
         <image name="bckgrnd_fallback.png" width="640" height="1096"/>
         <image name="bckgrnd_home.png" width="640" height="1096"/>
         <image name="bckgrnd_signin.png" width="640" height="1096"/>
+        <image name="dotted_line.png" width="1" height="171"/>
+        <image name="dotted_line.png" width="1" height="171"/>
         <image name="img_bar_menu.png" width="640" height="128"/>
         <image name="img_bar_menu.png" width="640" height="128"/>
         <image name="img_logo.png" width="392" height="44"/>

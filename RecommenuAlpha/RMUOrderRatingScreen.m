@@ -10,6 +10,7 @@
 
 @interface RMUOrderRatingScreen ()
 @property (weak, nonatomic) IBOutlet UITableView *orderTable;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @end
 
@@ -18,7 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self.doneButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -30,6 +31,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)popBackToMenu:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
