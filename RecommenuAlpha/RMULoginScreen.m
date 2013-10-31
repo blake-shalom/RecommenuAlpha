@@ -23,10 +23,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *dropDownButton;
 @property (weak, nonatomic) IBOutlet UIView *topToolbar;
-@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+@property (weak, nonatomic) IBOutlet RMUButton *signUpButton;
 
 @property (strong,nonatomic) User *currentUser;
 @property BOOL isTextEditing;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @end
 
 @implementation RMULoginScreen
@@ -34,8 +35,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.signUpButton.isBlue = YES;
     [self.topToolbar setBackgroundColor:[UIColor RMUGreyToolbarColor]];
     [self.signUpButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
+    [self.segment setTintColor:[UIColor RMUGoodBlueColor]];
     self.isTextEditing = NO;
 	// Do any additional setup after loading the view, typically from a nib.
 }

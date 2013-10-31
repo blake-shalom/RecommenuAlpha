@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.findMenuButton.isBlue = YES;
     [self.toolbar setBackgroundColor:[UIColor RMUGreyToolbarColor]];
     [self.findMenuButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
     self.locationManager = [[CLLocationManager alloc]init];
@@ -73,7 +74,7 @@
 {
     
     NSLog(@"LOCATING.....");
-    
+    [self.findMenuButton setUserInteractionEnabled:NO];
     [self findRestaurantWithRadius:10];
     
 }
@@ -93,6 +94,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation
                                          JSONRequestOperationWithRequest:request
                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                             [self.findMenuButton setUserInteractionEnabled:YES];
                                              NSDictionary *newDictionary = [JSON objectForKey:@"response"];
                                              NSArray *newArray = [newDictionary objectForKey:@"venues"];
                                              if (newArray.count == 0) {
@@ -111,6 +113,7 @@
                                              
                                          }
                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                             [self.findMenuButton setUserInteractionEnabled:YES];
                                              NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
                                          }];
     [operation start];
@@ -158,7 +161,7 @@
 - (void)pullMenuFromRestaurant:(NSString*)restaurantName
 {
     NSURL *restaurantURL = [NSURL URLWithString:[NSString
-                                                 stringWithFormat:(@"http://caisbalderas.webfactional.com/api/dishlist.json")]];
+                                                 stringWithFormat:(@"http://recommenu.caisbalderas.com/api/v1/restaurant/999111")]];
     NSURLRequest *restRequest = [[NSURLRequest alloc]initWithURL:restaurantURL];
     AFJSONRequestOperation *restOperation = [AFJSONRequestOperation
                                              JSONRequestOperationWithRequest:restRequest
@@ -199,7 +202,8 @@
  *  Processes a given JSON item into a menu object
  */
 
-+ (RMUMenu*)parseJSONIntoMenu:(NSArray*)JSONArray withRestaurantName:(NSString*)restaurantName {
++ (RMUMenu*)parseJSONIntoMenu:(NSArray*)JSONArray withRestaurantName:(NSString*)restaurantName
+{
     
     NSMutableArray *currentCourses = [[NSMutableArray alloc]init];
     for (NSDictionary *meal in JSONArray) {
@@ -218,7 +222,8 @@
         [currentCourses addObject:currentMeal];
         
     }
-    RMUMenu *currentMenu = [[RMUMenu alloc]initWithString:restaurantName withCourseArray:currentCourses];
+    RMUMenu *currentMenu = [[RMUMenu alloc]initWithString:restaurantName
+                                          withCourseArray:currentCourses];
     return currentMenu;
 }
 

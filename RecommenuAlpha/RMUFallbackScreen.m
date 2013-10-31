@@ -62,7 +62,7 @@
 {
     NSString *restaurantName = self.restaurants[indexPath.row];
     NSURL *restaurantURL = [NSURL URLWithString:[NSString
-                                                 stringWithFormat:(@"http://caisbalderas.webfactional.com/api/dishlist.json")]];
+                                                 stringWithFormat:(@"http://recommenu.caisbalderas.com/api/v1/restaurant/999111")]];
     NSURLRequest *restRequest = [[NSURLRequest alloc]initWithURL:restaurantURL];
     AFJSONRequestOperation *restOperation = [AFJSONRequestOperation
                                              JSONRequestOperationWithRequest:restRequest

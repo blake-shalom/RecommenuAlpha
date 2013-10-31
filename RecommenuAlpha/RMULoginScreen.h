@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RMUAppDelegate.h"
 #import "User.h"
+#import "RMUButton.h"
 
 @interface RMULoginScreen : UIViewController
 <UITextFieldDelegate>

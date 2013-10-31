@@ -34,11 +34,11 @@
     self.likeLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealLikes];
     self.dislikeLabel.text = [NSString stringWithFormat:(@"%i"), menuMeal.mealDislikes];
     if (menuMeal.selected) {
-        [self.checkButton setTitle:@"1" forState:UIControlStateNormal];
+//        [self.checkButton setTitle:@"1" forState:UIControlStateNormal];
         self.currentOrderState = orderStatusStateSelected;
     }
     else {
-        [self.checkButton setTitle:@"0" forState:UIControlStateNormal];
+//        [self.checkButton setTitle:@"0" forState:UIControlStateNormal];
         self.currentOrderState = orderStatusStateUnselected;
     }
 }
@@ -47,14 +47,15 @@
 {
     if (self.currentOrderState == orderStatusStateSelected) {
         self.currentOrderState = orderStatusStateUnselected;
-        [self.checkButton setTitle:@"0" forState:UIControlStateNormal];
+        [self.checkButton setBackgroundColor:[UIColor clearColor]];
+        [self setAlpha:1.0f];
         self.currentMeal.selected = NO;
     }
     else {
         self.currentOrderState = orderStatusStateSelected;
-        [self.checkButton setTitle:@"1" forState:UIControlStateNormal];
+        [self.checkButton setBackgroundColor:[UIColor RMUGreyToolbarColor]];
+        [self.checkButton setAlpha:0.1f];
         self.currentMeal.selected = YES;
     }
-    NSLog(@"current state after switch: %i", self.currentOrderState);
 }
 @end

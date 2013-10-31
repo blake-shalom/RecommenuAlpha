@@ -12,11 +12,12 @@
 #import "RMUMeal.h"
 #import "RMUMenuTableScreen.h"
 #import "RMUFallbackScreen.h"
+#import "RMUButton.h"
 
 @interface RMUHomeScreen : UIViewController
 <CLLocationManagerDelegate, UIAlertViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *findMenuButton;
+@property (weak, nonatomic) IBOutlet RMUButton *findMenuButton;
 
 + (RMUMenu*)parseJSONIntoMenu:(NSArray*)JSONArray withRestaurantName:(NSString*)restaurantName;
 

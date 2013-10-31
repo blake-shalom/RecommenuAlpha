@@ -12,5 +12,9 @@
 
 +(UIColor*) RMUGoodBlueColor;
 +(UIColor*) RMUGreyToolbarColor;
++(UIColor*) RMUDarkGoodBlue;
++(UIColor*) RMUBadRedColor;
++(UIColor*) RMUDarkBadRedColor;
++(UIColor*) RMUOffWhiteColor;
 
 @end
