@@ -29,6 +29,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *entreeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numDislikesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLikesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *minusButton;
 
 @property (weak,nonatomic) RMUMeal *currentMeal;
 @property NSInteger index;

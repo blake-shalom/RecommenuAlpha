@@ -52,7 +52,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    [cell.textLabel setText:self.restaurants[indexPath.row]];
+    RMUMenu *menu = self.restaurants[indexPath.row];
+    [cell.textLabel setText:menu.restaurantName];
+    [cell.detailTextLabel setText:menu.restaurantAddress];
     return cell;
 }
 
@@ -60,7 +62,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *restaurantName = self.restaurants[indexPath.row];
+    RMUMenu *restaurant = self.restaurants[indexPath.row];
+    NSString *restaurantName = restaurant.restaurantName;
     NSURL *restaurantURL = [NSURL URLWithString:[NSString
                                                  stringWithFormat:(@"http://recommenu.caisbalderas.com/api/v1/restaurant/999111")]];
     NSURLRequest *restRequest = [[NSURLRequest alloc]initWithURL:restaurantURL];

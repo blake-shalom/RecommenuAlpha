@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.nameOfRestaurant setText:self.menu.restaurantName];
     [self.doneButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
 	// Do any additional setup after loading the view.
 }

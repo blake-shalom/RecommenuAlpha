@@ -35,7 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.signUpButton.isBlue = YES;
     [self.topToolbar setBackgroundColor:[UIColor RMUGreyToolbarColor]];
     [self.signUpButton setBackgroundColor:[UIColor RMUGoodBlueColor]];
     [self.segment setTintColor:[UIColor RMUGoodBlueColor]];

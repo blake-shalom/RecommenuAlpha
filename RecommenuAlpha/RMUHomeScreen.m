@@ -141,7 +141,11 @@
                                              }
                                              else {
                                                  for (int i = 0; i < NUM_FALLBACK; i++) {
-                                                     self.nextFiveRestaurants[i] = [newArray[i] objectForKey:@"name"];
+                                                     NSString *name = [newArray[i] objectForKey:@"name"];
+                                                     NSDictionary *location = [newArray[i] objectForKey:@"location"];
+                                                     NSString *address = [location objectForKey:@"address"];
+                                                     RMUMenu *menu = [[RMUMenu alloc]initWithString:name withAddress:address];
+                                                     self.nextFiveRestaurants[i] = menu;
                                                  }
                                                  [self.locationManager stopUpdatingLocation];
                                                  [self performSegueWithIdentifier:@"homeToFallback" sender:self];

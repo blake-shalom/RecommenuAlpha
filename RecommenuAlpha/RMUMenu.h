@@ -14,7 +14,7 @@
 @property NSMutableArray *meals;
 @property NSString *restaurantAddress;
 
-- (id)initWithString:(NSString*) restaurantName withAddress:(NSString*) address withCourseArray: (NSMutableArray*) mealArray;
+- (id)initWithString:(NSString*) restaurantName withAddress:(NSString*) address;
 - (id)initWithString:(NSString*) restaurantName withCourseArray: (NSMutableArray*) mealArray;
 
 @end
